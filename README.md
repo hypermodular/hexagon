@@ -1,2 +1,0 @@
-# hexagon
-hexagon.hypermodular.com
