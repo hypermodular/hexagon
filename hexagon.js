@@ -18,7 +18,7 @@ function getHexagonPoints(edgeLength) {
     ];
 
     // Połącz współrzędne w string dla atrybutu 'points' w SVG
-    return points.map(p => `${p.x},${p.y}`).join(' ');
+    return points.map(p => `${ Math.round(p.x + 'e+2') },${ Math.round(p.y + 'e+2') }`).join(' ');
 }
 
 function renderHexagon(edgeLength) {
