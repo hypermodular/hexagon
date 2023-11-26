@@ -5,33 +5,37 @@ document.addEventListener('DOMContentLoaded', function() {
 function getHexagonPoints(edgeLength) {
     // Oblicz wysokość sześciokąta
     const height = Math.sqrt(3) * edgeLength;
-  
+    const centerY = height / 2 + edgeLength / 2;
+
     // Oblicz współrzędne wierzchołków
     const points = [
-        { x: 150 - edgeLength, y: 130 }, // lewy górny wierzchołek
-        { x: 150 - edgeLength / 2, y: 130 - height / 2 }, // górny lewy
-        { x: 150 + edgeLength / 2, y: 130 - height / 2 }, // górny prawy
-        { x: 150 + edgeLength, y: 130 }, // prawy górny wierzchołek
-        { x: 150 + edgeLength / 2, y: 130 + height / 2 }, // dolny prawy
-        { x: 150 - edgeLength / 2, y: 130 + height / 2 }, // dolny lewy
+        { x: edgeLength / 2, y: centerY }, // lewy górny wierzchołek
+        { x: 0, y: centerY - height / 2 }, // górny lewy
+        { x: edgeLength, y: centerY - height / 2 }, // górny prawy
+        { x: edgeLength * 1.5, y: centerY }, // prawy górny wierzchołek
+        { x: edgeLength, y: centerY + height / 2 }, // dolny prawy
+        { x: 0, y: centerY + height / 2 }, // dolny lewy
     ];
-  
+
     // Połącz współrzędne w string dla atrybutu 'points' w SVG
     return points.map(p => `${p.x},${p.y}`).join(' ');
 }
 
 function renderHexagon(edgeLength) {
     const hexagonPoints = getHexagonPoints(edgeLength);
-  
+    const height = Math.sqrt(3) * edgeLength;
+    const width = edgeLength * 2;
+    const viewBox = `0 0 ${width} ${height + edgeLength}`; // Ustaw viewBox do obejmowania całego sześciokąta
+
     document.getElementById('svg-container').innerHTML = `
-    <svg width="300px" height="260px" viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg">
+    <svg width="${width}px" height="${height + edgeLength}px" viewBox="${viewBox}" xmlns="http://www.w3.org/2000/svg">
         <polygon points="${hexagonPoints}" fill="none" stroke="black" />
-        <!-- Tutaj powinny zostać dodane pozostałe figury i tekst -->
+        <!-- Reszta figury zgodnie z podanymi współrzędnymi i właściwościami -->
     </svg>
     `;
 }
 
-function updateHexagon() {
-    const edgeLength = document.getElementById('edge-length').value;
+function updateHexagon(newEdgeLength) {
+    const edgeLength = newEdgeLength || document.getElementById('edge-length').value;
     renderHexagon(edgeLength);
 }
