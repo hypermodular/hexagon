@@ -1,33 +1,33 @@
 document.addEventListener('DOMContentLoaded', function () {
-    renderHexagon(265); // wartość początkowa dla długości boku
+    renderHexagon(550); // wartość początkowa dla długości boku
 });
 
 function getPointsByWidth(edgeLength) {
     // Oblicz wysokość sześciokąta
-    const height = Math.sqrt(3) * edgeLength;
-    const centerY = height / 2 + edgeLength / 2;
-    const marginX = edgeLength / 2 + 1;
+    let height = Math.sqrt(3) * edgeLength;
+    let centerY = height / 2 + edgeLength / 2;
+    let marginX = edgeLength / 2 + 1;
 
-    var gorny_lewy = {x: marginX, y: centerY - height / 2}; // górny lewy
-    var gorny_prawy = {x: marginX + edgeLength, y: centerY - height / 2}; // górny prawy
-    var dolny_prawy = {x: marginX + edgeLength, y: centerY + height / 2}; // dolny prawy
-    var dolny_lewy = {x: marginX, y: centerY + height / 2}; // dolny lewy
-    var lewy = {x: marginX - edgeLength / 2, y: centerY}; // lewy górny wierzchołek
-    var prawy = {x: marginX + edgeLength * 1.5, y: centerY}; // prawy górny wierzchołek
+    let gorny_lewy = {x: marginX, y: centerY - height / 2}; // górny lewy
+    let gorny_prawy = {x: marginX + edgeLength, y: centerY - height / 2}; // górny prawy
+    let dolny_prawy = {x: marginX + edgeLength, y: centerY + height / 2}; // dolny prawy
+    let dolny_lewy = {x: marginX, y: centerY + height / 2}; // dolny lewy
+    let lewy = {x: marginX - edgeLength / 2, y: centerY}; // lewy górny wierzchołek
+    let prawy = {x: marginX + edgeLength * 1.5, y: centerY}; // prawy górny wierzchołek
 
     return [lewy, gorny_lewy, gorny_prawy, prawy, dolny_prawy, dolny_lewy];
 }
 
 function getCrossByEdge(edgeLength) {
     // Oblicz wysokość sześciokąta
-    const height = Math.sqrt(3) * edgeLength;
-    const centerY = height / 2 + edgeLength / 2;
-    const marginX = edgeLength / 2 + 1;
+    let height = Math.sqrt(3) * edgeLength;
+    let centerY = height / 2 + edgeLength / 2;
+    let marginX = edgeLength / 2 + 1;
 
-    var gorny_lewy = {x: marginX, y: centerY - height / 2}; // górny lewy
-    var gorny_prawy = {x: marginX + edgeLength, y: centerY - height / 2}; // górny prawy
-    var dolny_prawy = {x: marginX + edgeLength, y: centerY + height / 2}; // dolny prawy
-    var dolny_lewy = {x: marginX, y: centerY + height / 2}; // dolny lewy
+    let gorny_lewy = {x: marginX, y: centerY - height / 2}; // górny lewy
+    let gorny_prawy = {x: marginX + edgeLength, y: centerY - height / 2}; // górny prawy
+    let dolny_prawy = {x: marginX + edgeLength, y: centerY + height / 2}; // dolny prawy
+    let dolny_lewy = {x: marginX, y: centerY + height / 2}; // dolny lewy
 
     return [gorny_lewy, dolny_prawy, gorny_prawy, dolny_lewy];
 }
@@ -35,56 +35,56 @@ function getCrossByEdge(edgeLength) {
 
 function getLogicByEdge(edgeLength, margin = 1) {
     // Oblicz wysokość sześciokąta
-    const height = Math.sqrt(3) * edgeLength;
-    //const width = Math.sqrt(3) * edgeLength;
-    const centerY = height / 2 + edgeLength / 2;
-    const marginX = edgeLength / 2 + 1;
-    //const centerX = edgeLength / 2 + edgeLength / 2;
-    var center = {x: marginX + edgeLength / 2, y: centerY + margin}; // górny prawy
-    var dolny_prawy = {x: marginX + edgeLength - margin, y: centerY + height / 2 - margin}; // dolny prawy
-    var dolny_lewy = {x: marginX + margin, y: centerY + height / 2 - margin}; // dolny lewy
+    let height = Math.sqrt(3) * edgeLength;
+    //let width = Math.sqrt(3) * edgeLength;
+    let centerY = height / 2 + edgeLength / 2;
+    let marginX = edgeLength / 2 + 1;
+    //let centerX = edgeLength / 2 + edgeLength / 2;
+    let center = {x: marginX + edgeLength / 2, y: centerY + margin}; // górny prawy
+    let dolny_prawy = {x: marginX + edgeLength - margin, y: centerY + height / 2 - margin}; // dolny prawy
+    let dolny_lewy = {x: marginX + margin, y: centerY + height / 2 - margin}; // dolny lewy
 
     return [dolny_lewy, dolny_prawy, center];
 }
 
 function getDataByEdge(edgeLength, margin = 1) {
     // Oblicz wysokość sześciokąta
-    const height = Math.sqrt(3) * edgeLength;
-    //const width = Math.sqrt(3) * edgeLength;
-    const centerY = height / 2 + edgeLength / 2;
-    const marginX = edgeLength / 2 + 1;
-    //const centerX = edgeLength / 2 + edgeLength / 2;
-    var center = {x: marginX + edgeLength / 2, y: centerY - margin}; // górny prawy
-    var gorny_lewy = {x: marginX + margin, y: centerY - height / 2 + margin}; // górny lewy
-    var gorny_prawy = {x: marginX + edgeLength - margin, y: centerY - height / 2 + margin}; // górny prawy
+    let height = Math.sqrt(3) * edgeLength;
+    //let width = Math.sqrt(3) * edgeLength;
+    let centerY = height / 2 + edgeLength / 2;
+    let marginX = edgeLength / 2 + 1;
+    //let centerX = edgeLength / 2 + edgeLength / 2;
+    let center = {x: marginX + edgeLength / 2, y: centerY - margin}; // górny prawy
+    let gorny_lewy = {x: marginX + margin, y: centerY - height / 2 + margin}; // górny lewy
+    let gorny_prawy = {x: marginX + edgeLength - margin, y: centerY - height / 2 + margin}; // górny prawy
 
     return [gorny_lewy, gorny_prawy, center];
 }
 
 function getInDiamondByEdge(edgeLength, margin = 1) {
     // Oblicz wysokość sześciokąta
-    const height = Math.sqrt(3) * edgeLength;
-    const centerY = height / 2 + edgeLength / 2;
-    const marginX = edgeLength / 2 + 1;
+    let height = Math.sqrt(3) * edgeLength;
+    let centerY = height / 2 + edgeLength / 2;
+    let marginX = edgeLength / 2 + 1;
 
-    var lewy = {x: marginX - edgeLength / 2 + margin, y: centerY}; // lewy górny wierzchołek
-    var gorny_lewy = {x: marginX, y: centerY - height / 2 + margin}; // górny lewy
-    var center = {x: marginX + edgeLength / 2 - margin, y: centerY}; // górny prawy
-    var dolny_lewy = {x: marginX, y: centerY + height / 2 - margin}; // dolny lewy
+    let lewy = {x: marginX - edgeLength / 2 + margin, y: centerY}; // lewy górny wierzchołek
+    let gorny_lewy = {x: marginX, y: centerY - height / 2 + margin}; // górny lewy
+    let center = {x: marginX + edgeLength / 2 - margin, y: centerY}; // górny prawy
+    let dolny_lewy = {x: marginX, y: centerY + height / 2 - margin}; // dolny lewy
 
     return [lewy, gorny_lewy, center, dolny_lewy];
 }
 
 function getOutDiamondByEdge(edgeLength, margin = 1) {
     // Oblicz wysokość sześciokąta
-    const height = Math.sqrt(3) * edgeLength;
-    const centerY = height / 2 + edgeLength / 2;
-    const marginX = edgeLength / 2 + 1;
+    let height = Math.sqrt(3) * edgeLength;
+    let centerY = height / 2 + edgeLength / 2;
+    let marginX = edgeLength / 2 + 1;
 
-    var prawy = {x: marginX + edgeLength * 1.5 - margin, y: centerY}; // prawy górny wierzchołek
-    var dolny_prawy = {x: marginX + edgeLength , y: centerY + height / 2 - margin}; // dolny prawy
-    var center = {x: marginX + edgeLength / 2 + margin, y: centerY}; // górny prawy
-    var gorny_prawy = {x: marginX + edgeLength, y: centerY - height / 2 + margin}; // górny prawy
+    let prawy = {x: marginX + edgeLength * 1.5 - margin, y: centerY}; // prawy górny wierzchołek
+    let dolny_prawy = {x: marginX + edgeLength , y: centerY + height / 2 - margin}; // dolny prawy
+    let center = {x: marginX + edgeLength / 2 + margin, y: centerY}; // górny prawy
+    let gorny_prawy = {x: marginX + edgeLength, y: centerY - height / 2 + margin}; // górny prawy
 
     return [center, gorny_prawy, prawy, dolny_prawy];
 }
@@ -105,39 +105,42 @@ function getTriangleByPoints(points) {
 }
 
 
-function renderHexagon(edgeLength) {
-    const hexagonPoints = getHexagonByPoints(getPointsByWidth(edgeLength));
-    const height = Math.sqrt(3) * edgeLength;
-    const width = edgeLength * 3;
-    const viewBox = `0 0 ${width} ${height + edgeLength}`; // Ustaw viewBox do obejmowania całego sześciokąta
-    const centerY = height / 2 + edgeLength / 2;
-    const marginX = edgeLength / 2 + 1;
+function renderHexagon(edgeLength = 50) {
+    let height = Math.sqrt(3) * edgeLength;
+    let width = edgeLength * 3;
+    let viewBox = `0 0 ${width} ${height + edgeLength}`; // Ustaw viewBox do obejmowania całego sześciokąta
+    let centerY = height / 2 + edgeLength / 2;
+    let marginX = edgeLength / 2 + 1;
 
-    var gorny_lewy = {x: marginX, y: centerY - height / 2}; // górny lewy
-    var gorny_prawy = {x: marginX + edgeLength, y: centerY - height / 2}; // górny prawy
-    var dolny_prawy = {x: marginX + edgeLength, y: centerY + height / 2}; // dolny prawy
-    var dolny_lewy = {x: marginX, y: centerY + height / 2}; // dolny lewy
-    var lewy = {x: marginX - edgeLength / 2, y: centerY}; // lewy górny wierzchołek
-    var prawy = {x: marginX + edgeLength * 1.5, y: centerY}; // prawy górny wierzchołek
-    var center = {x: marginX + edgeLength / 2, y: centerY}; // górny prawy
+    let gorny_lewy = {x: marginX, y: centerY - height / 2}; // górny lewy
+    let gorny_prawy = {x: marginX + edgeLength, y: centerY - height / 2}; // górny prawy
+    let dolny_prawy = {x: marginX + edgeLength, y: centerY + height / 2}; // dolny prawy
+    let dolny_lewy = {x: marginX, y: centerY + height / 2}; // dolny lewy
+    let lewy = {x: marginX - edgeLength / 2, y: centerY}; // lewy górny wierzchołek
+    let prawy = {x: marginX + edgeLength * 1.5, y: centerY}; // prawy górny wierzchołek
+    let center = {x: marginX + edgeLength / 2, y: centerY}; // górny prawy
 
-    const borderColor = "white";
-    const fontColor = "white";
-    const fontSize = Math.round(edgeLength / 5);
-    const fontSizeMarginX = Math.round(edgeLength / 10);
-    const fontSizeMarginY = Math.round(edgeLength / 20);
+    let borderColor = "white";
+    let fontColor = "white";
+    let fontSize = Math.round(edgeLength / 5);
+    let fontSizeMarginX = Math.round(edgeLength / 10);
+    let fontSizeMarginY = Math.round(edgeLength / 20);
 
-    var leftCenter = {x: lewy['x'] + fontSizeMarginX, y: centerY + fontSizeMarginY}
-    var rightCenter = {x: prawy['x'] - fontSizeMarginX, y: centerY + fontSizeMarginY}
-    var topLeftCenter = {x: center['x'], y: gorny_lewy['y'] + fontSize}
-    var bottomLeftCenter = {x: center['x'] , y: dolny_lewy['y'] - fontSizeMarginY}
+    let leftCenter = {x: lewy['x'] + fontSizeMarginX, y: centerY + fontSizeMarginY}
+    let rightCenter = {x: prawy['x'] - fontSizeMarginX, y: centerY + fontSizeMarginY}
+    let topLeftCenter = {x: center['x'], y: gorny_lewy['y'] + fontSize}
+    let bottomLeftCenter = {x: center['x'] , y: dolny_lewy['y'] - fontSizeMarginY}
 
-    var crossPoints = getCrossByEdge(edgeLength)
-    var dataPoints = getTriangleByPoints(getDataByEdge(edgeLength));
-    var logicPoints = getTriangleByPoints(getLogicByEdge(edgeLength));
+    let margin = 3;
 
-    var inPoints = getDiamondByPoints(getInDiamondByEdge(edgeLength));
-    var outPoints = getDiamondByPoints(getOutDiamondByEdge(edgeLength));
+    let hexagonPoints = getHexagonByPoints(getPointsByWidth(edgeLength));
+
+    let crossPoints = getCrossByEdge(edgeLength)
+    let dataPoints = getTriangleByPoints(getDataByEdge(edgeLength, margin));
+    let logicPoints = getTriangleByPoints(getLogicByEdge(edgeLength, margin));
+
+    let inPoints = getDiamondByPoints(getInDiamondByEdge(edgeLength, margin));
+    let outPoints = getDiamondByPoints(getOutDiamondByEdge(edgeLength, margin));
 
 
     document.getElementById('svg-container').innerHTML = `
@@ -172,6 +175,7 @@ function renderHexagon(edgeLength) {
 }
 
 function updateHexagon(newEdgeLength) {
-    const edgeLength = newEdgeLength || document.getElementById('edge-length').value;
+    //let edgeLength = newEdgeLength || document.getElementById('edge').value;
+    let edgeLength = document.getElementById('edge').value;
     renderHexagon(edgeLength);
 }
