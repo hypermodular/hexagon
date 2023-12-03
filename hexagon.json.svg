@@ -1,0 +1,27 @@
+<svg width="${width}px" height="${height + edgeLength}px" viewBox="${viewBox}" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="${hexagonPoints}" fill="none" stroke="${borderColor}" />
+
+    <!-- Linie przekątnych -->
+    <line x1="${crossPoints[0]['x']}" y1="${crossPoints[0]['y']}" x2="${crossPoints[1]['x']}" y2="${crossPoints[1]['y']}" stroke="${borderColor}" />
+    <line x1="${crossPoints[2]['x']}" y1="${crossPoints[2]['y']}" x2="${crossPoints[3]['x']}" y2="${crossPoints[3]['y']}" stroke="${borderColor}" />
+
+    <!-- Górny zielony trójkąt -->
+    <polygon points="${dataPoints}" fill="blue" />
+    <text x="${topLeftCenter['x']}" y="${topLeftCenter['y']}" font-size="${fontSize}" fill="${fontColor}" text-anchor="middle">DANE</text>
+
+    <!-- Dolny niebieski trójkąt -->
+    <polygon points="${logicPoints}" fill="green" />
+    <text x="${bottomLeftCenter['x']}" y="${bottomLeftCenter['y']}" font-size="${fontSize}" fill="${fontColor}" text-anchor="middle">LOGIKA</text>
+
+
+
+    <!-- Lewy żółty romb  -->
+    <polygon points="${inPoints}" fill="pink" />
+    <text x="${leftCenter['x']}" y="${leftCenter['y']}" font-size="${fontSize}" fill="${fontColor}">wejście</text>
+
+    <!-- Prawy pomarańczowy romb -->
+    <polygon points="${outPoints}" fill="orange" />
+    <text x="${rightCenter['x']}" y="${rightCenter['y']}" font-size="${fontSize}" fill="${fontColor}" text-anchor="end">wyjście</text>
+
+
+</svg>

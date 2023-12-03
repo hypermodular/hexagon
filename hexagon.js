@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    renderHexagon(250); // wartość początkowa dla długości boku
+    renderHexagon(150); // wartość początkowa dla długości boku
 });
 
 function getPointsByWidth(edgeLength, marginX, centerY) {
